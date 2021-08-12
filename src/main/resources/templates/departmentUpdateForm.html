@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Employee Management System</title>
+</head>
+<body>
+<div>
+    <h2>Update Department</h2>
+
+    <form action="#" th:action="@{/department/updateDepartment}" th:object="${department}"
+          method="POST">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <input type="text" th:field="*{name}">
+
+        <input type="text" th:field="*{email}">
+
+        <input type="text" th:field="*{phoneNumber}">
+
+        <button type="submit"> Update Department</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/department/all}"> Back to Departments</a>
+</div>
+</body>
+</html>

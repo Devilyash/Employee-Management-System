@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Employee Management System</title>
+</head>
+<body>
+<div>
+    <h2>Add New Employee</h2>
+
+    <form action="#" th:action="@{/employee/addEmployee}" th:object="${employee}" method="POST">
+        <input type="text" th:field="*{name}"
+               placeholder="Employee Name">
+
+        <input type="text" th:field="*{email}"
+               placeholder="Employee Email">
+
+        <input type="text" th:field="*{designation}"
+               placeholder="Employee Designation">
+
+        <input type="text" th:field="*{phoneNumber}"
+               placeholder="Employee Contact Number">
+
+        <input type="text" th:field="*{employeeCode}"
+               placeholder="Employee Code">
+
+        <select name="gender" th:field="*{gender}">
+            <optgroup label="Gender">
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+                <option value="OTHER">Other</option>
+            </optgroup>
+        </select>
+
+<!--        <input type="text" th:field="*{department}"-->
+<!--               placeholder="Employee Department">-->
+
+        <select name="department" th:field="*{department}">
+            <optgroup label="Department">
+                <option th:each="department : ${departments}" th:value="${department.name}" th:text="${department.name}"></option>
+            </optgroup>
+        </select>
+
+        <input type="text" th:field="*{address.street}"
+               placeholder="Employee Street">
+
+        <input type="text" th:field="*{address.city}"
+               placeholder="Employee City">
+
+        <input type="text" th:field="*{address.state}"
+               placeholder="Employee State">
+
+        <input type="text" th:field="*{address.pincode}"
+               placeholder="Employee Pincode">
+
+        <button type="submit"> Save Employee</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/employee/all}"> Back to Employees</a>
+</div>
+</body>
+</html>

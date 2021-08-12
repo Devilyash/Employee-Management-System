@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Employee Management System</title>
+</head>
+<body>
+<div>
+    <h2>Update Employee</h2>
+
+    <form action="#" th:action="@{/employee/updateEmployee}" th:object="${employee}"
+          method="POST">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <input type="text" th:field="*{name}">
+
+        <input type="text" th:field="*{email}">
+
+        <input type="text" th:field="*{designation}">
+
+        <input type="text" th:field="*{phoneNumber}">
+
+        <input type="text" th:field="*{employeeCode}">
+
+        <select name="gender" th:field="*{gender}">
+            <optgroup label="Gender">
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+                <option value="OTHER">Other</option>
+            </optgroup>
+        </select>
+
+        <!--        <input type="text" th:field="*{department}"-->
+        <!--               placeholder="Employee Department">-->
+
+        <select name="department" th:field="*{department}">
+            <optgroup label="Department">
+                <option th:each="department : ${departments}" th:value="${department.name}" th:text="${department.name}"></option>
+            </optgroup>
+        </select>
+
+        <input type="hidden" th:field="*{address.id}" />
+
+        <input type="text" th:field="*{address.street}">
+
+        <input type="text" th:field="*{address.city}">
+
+        <input type="text" th:field="*{address.state}">
+
+        <input type="text" th:field="*{address.pincode}">
+
+        <button type="submit"> Update Employee</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/employee/all}"> Back to Employees</a>
+</div>
+</body>
+</html>

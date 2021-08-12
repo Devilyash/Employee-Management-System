@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <title>Departments</title>
+</head>
+<body>
+
+<div class="topnav">
+    <a th:href="@{/employee/all}" id="ems">EMS</a>
+    <a th:href="@{/employee/all}">Employee Section</a>
+    <a th:href="@{/department/newDepartmentForm}">Add Department</a>
+</div>
+<br>
+<div align="center">
+    <form action="#" th:action="@{/department/all}" method="GET">
+        <input type="text" name="keyword">
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<div align="center" class="main">
+    <h1>Department List</h1>
+    <table border="1" class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="department: ${departments}">
+            <td th:text="${department.name}"></td>
+            <td th:text="${department.email}"></td>
+            <td th:text="${department.phoneNumber}"></td>
+            <td>
+                <a th:href="@{/department/deleteDepartment/{id}(id=${department.id})}">Delete</a>
+                <a th:href="@{/department/showUpdateForm/{id}/update(id=${department.id})}">Update</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--<div class="toggle">-->
+<!--    <ion-icon name="menu-outline" class="open"></ion-icon>-->
+<!--    <ion-icon name="close-outline" class="close"></ion-icon>-->
+<!--</div>-->
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
